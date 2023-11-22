@@ -7,9 +7,6 @@ const express = require('express');
 const router = express.Router();
 const {checkUserRole,authenticateUser}=require("../../controller/loginuser controller")
 const { roles } = require('../../utils/constants'); // Define your role constants
-const multer = require('multer');
-const storage = multer.memoryStorage();
-// const upload = multer({ storage: storage });
 
 
 router.get('/data/:key',ProjectsSearch)
