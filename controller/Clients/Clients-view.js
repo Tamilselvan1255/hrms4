@@ -11,6 +11,7 @@ exports.ClientsList=async (req, res) => {
   
         const data = await Clients
             .find()
+            .sort({ _id: -1 })
             .skip((page - 1) * perPage)
             .limit(perPage);
   
