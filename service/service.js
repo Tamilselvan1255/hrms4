@@ -24,10 +24,10 @@ app.use('/userlogin',userLogin)
 app.use('/shift',shiftRouter)
 app.use("/allemployee",all_employee)
 app.use('/promotionemployee',promotion)
-app.use("/project",project)
-app.use("/empolyeeTickets",employee_tickets)
+// app.use("/project",project)
+// app.use("/empolyeeTickets",employee_tickets)
 app.use("/clients",client)
-app.use("/companysetting",companySetting)
+app.use("/companysetting",companySetting) 
 
 
 module.exports=app

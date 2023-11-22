@@ -109,7 +109,7 @@ const searchTrainingUser = async (req, res) => {
         } else {
           res.status(400).send("No Users");
         }  
-    } catch (err) {
+    } catch (err) { 
       res.status(500).send(err);
     }
   };
@@ -165,3 +165,4 @@ const updateTrainingUser = async (req, res) => {
 
 
 // Define other controller functions for your routes
+ 
