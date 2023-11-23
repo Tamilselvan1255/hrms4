@@ -10,7 +10,7 @@ const Emp_projectsSchema_joi = Joi.object({
     Rate:Joi.number().required(),
     // Upload_File:Joi.string(),
     Start_Date:Joi.date(),
-    end_Date:Joi.date()
+    end_Date:Joi.date().required()
   });
 
  module.exports=Emp_projectsSchema_joi;

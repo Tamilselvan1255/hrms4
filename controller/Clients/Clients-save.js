@@ -4,23 +4,27 @@ const Clients_joi = require("../../modals/Clients/Clients_schema_joi");
 exports.ClientsAdd=(async (req, res) => {
     try {
         const { 
-            client_name ,
-            client_email ,
-            client_company ,
-            client_mobilenumber ,
-            client_address ,
-            date ,
+                   Name,
+                   date,
+                   Address,
+                   Email,
+                   Project,
+                   Mobile_Number,
+                   Company_Name
             } = req.body;
+            const formattedDate = new Date(date).toLocaleDateString('en-GB');
+
             const user = await Clients.findOne({client_email});     
             if(!user){            
                 
                 const Clients_employees = new Clients({
-                    client_name ,
-                    client_email ,
-                    client_company ,
-                    client_mobilenumber ,
-                    client_address ,
-                    date ,
+                   Name,
+                   date:formattedDate,
+                   Address,
+                   Email,
+                   Project,
+                   Mobile_Number,
+                   Company_Name
                 });
                 const { error } = Clients_joi.validate(req.body);
 

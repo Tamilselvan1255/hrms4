@@ -4,26 +4,26 @@ const Schema = mongoose.Schema;
 
 
 const ClientsSchema = new Schema({
-    client_name: {
+    Name: {
         type: String,
         required: true,
     },
-    client_email: {
+    Email: {
         unique: true,
         type: String,
         unique: true,
         required: true,
         trim: true,
     },
-    client_company: {
+    Project: {
         type: String,
         required: true,
     },
-    client_mobilenumber: {
+    Mobile_Number: {
         type: Number,
         required: true,
     },
-    client_address: {
+    Address: {
         type: String,
         required: true,
     },
@@ -32,7 +32,10 @@ const ClientsSchema = new Schema({
         type: String,
         default: Date.now,
     },
- 
+    Company_Name:{
+        type:String,
+        reduired:true
+    }
 
 
 });

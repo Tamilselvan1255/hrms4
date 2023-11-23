@@ -18,7 +18,7 @@ exports.promotionAdd=( async (req, res) =>  {
             department,
             promotion_from,
             promotion_to,
-            promotion_date,
+            promotion_date:formattedDate,
         });
         
         const savedPromotion = await promotion_employees.save();

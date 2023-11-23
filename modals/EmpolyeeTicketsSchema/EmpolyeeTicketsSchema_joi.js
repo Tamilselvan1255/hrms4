@@ -10,7 +10,7 @@ const employeeTicketsJoiSchema = Joi.object({
   status: Joi.string().required(),
   // attachment: Joi.string().required(),
   description: Joi.string().required(),
-  create_date: Joi.date(),
+  create_date: Joi.date()
 });
 
 module.exports = employeeTicketsJoiSchema;

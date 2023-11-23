@@ -40,7 +40,7 @@ const ProjectSchema = new Schema({
     },
     end_Date: {
         type: Date,
-        default: Date.now,
+        required:true
     }
 });
 
