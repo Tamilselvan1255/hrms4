@@ -6,7 +6,7 @@ const getAllcompanySetting =async (req, res) => {
   const perPage = 10;
   const page = parseInt(req.query.page) || 1; // Parse the page query parameter or default to 1
 
-  try {
+  try { 
       const totalUsers = await companySetting.countDocuments();
       const totalPages = Math.ceil(totalUsers / perPage);
 
@@ -31,19 +31,19 @@ const getAllcompanySetting =async (req, res) => {
 
 const createcompanySetting = async (req, res) => {
  try {
-    const schema = Joi.object({ Email: Joi.string().email().required(),Company_Name:Joi.string().required(),Contact_person:Joi.string().required(), Address:Joi.string().required(), Country:Joi.string().required(), City:Joi.string().required(), State:Joi.string().required(), Postal_Code:Joi.number().required(), Phone_Number:Joi.number().required(),Mobile_Number:Joi.number().required(),Fax:Joi.required().required(),Website_Url:Joi.required().required() });
+    const schema = Joi.object({ Email: Joi.string().email().required(),Company_Name:Joi.string().required(),Contact_Person:Joi.string().required(), Address:Joi.string().required(), Country:Joi.string().required(), City:Joi.string().required(), State:Joi.string().required(), Postal_Code:Joi.number().required(), Phone_Number:Joi.number().required(),Mobile_Number:Joi.number().required(),Fax:Joi.required().required(),Website_Url:Joi.required().required() });
     const { error } = schema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
-    const { Company_Name, Contact_person, Address, Country, City, State, Postal_Code, Phone_Number,Mobile_Number,Fax,Website_Url } = req.body;
+    const { Company_Name, Email,Contact_Person, Address, Country, City, State, Postal_Code, Phone_Number,Mobile_Number,Fax,Website_Url } = req.body;
 
-    const user = await loginUsers.findOne({Email});     
+    const user = await companySetting.findOne({Email});     
         
-    if(!user){
+    if(user){
       res.status(400).send('User Already Registered');
 
     }else{
 
-      const newuser = new companySetting({ Company_Name, Contact_person, Address, Country, City, State, Postal_Code, Phone_Number,Mobile_Number,Fax,Website_Url });
+      const newuser = new companySetting({ Company_Name,Email, Contact_Person, Address, Country, City, State, Postal_Code, Phone_Number,Mobile_Number,Fax,Website_Url });
       await newuser.save();
       res.status(200).send('Company Data Added Successfully');
     }

@@ -34,7 +34,7 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
-    Phone_number:{
+    Phone_Number:{
         type:Number,
         required:true
     },
@@ -56,6 +56,6 @@ const userSchema = new Schema({
     
 })
 
-const loginUsers= mongoose.model('Company_Setting',userSchema)
+const loginUsers= mongoose.model('CompanySetting',userSchema)
 
 module.exports=loginUsers;
