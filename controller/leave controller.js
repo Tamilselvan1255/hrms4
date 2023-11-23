@@ -50,7 +50,7 @@ const registerLeaveUser = async (req, res) => {
       // const user = await allemployee .findOne({email:id}); 
       const newLeaveUser = new leaveUsers({ 
         // userId:user._id,
-        Name,Start_Date, End_Date, Reason });
+        Name,Start_Date:formattedStartDate, End_Date:formattedEndDate, Reason });
       await newLeaveUser.save();
 
       res.status(200).send('Leave Added Sucessfully');

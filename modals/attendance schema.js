@@ -16,8 +16,8 @@ const userSchema = new Schema({
         type:String,
         required:true,   
     },
-    Date:{
-        type:String,
+    date:{
+        type:Date,
         required:true,
     },
     Punch_In:{

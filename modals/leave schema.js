@@ -13,11 +13,11 @@ const userSchema = new Schema({
         required:true,
     },
     Start_Date:{
-        type:String,
+        type:Date,
         required:true,
     },
     End_Date :{
-        type:String,
+        type:Date,
         required:true,
     },
     

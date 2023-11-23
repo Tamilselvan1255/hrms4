@@ -58,8 +58,8 @@ const registerTrainingUser = async (req, res) => {
               Status
           } = req.body;
 
-          // const formattedStartDate = new Date(Start_Date).toLocaleDateString('en-GB');
-          // const formattedEndDate = new Date(End_Date).toLocaleDateString('en-GB');
+          const formattedStartDate = new Date(Start_Date).toLocaleDateString('en-GB');
+          const formattedEndDate = new Date(End_Date).toLocaleDateString('en-GB');
           // const id=req.user.id
           // const user = await allemployee .findOne({email:id}); 
         const newTrainingUser = new trainingUsers({
@@ -68,8 +68,8 @@ const registerTrainingUser = async (req, res) => {
             Training_Cost,
             Employee,
             Trainer,
-            Start_Date,
-            End_Date, 
+            Start_Date:formattedStartDate,
+            End_Date:formattedEndDate, 
             Discription,
             Status
         });

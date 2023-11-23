@@ -56,7 +56,7 @@ const registerTimesheetUser = async (req, res) => {
           // userId:user._id,
             Project_Name,
             Deadline,
-            Date,
+            Date:formatteDate,
             Total_Hours,
             Remaining_Hours,
             Hours,
