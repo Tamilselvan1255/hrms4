@@ -43,7 +43,7 @@ exports.allemployeeNameList = async (req, res) => {
         //     id: employee._id
         // }));
 
-        const data = await allemployee
+        const data = await allemployee 
             .find()
             .skip((page - 1) * perPage)
             .limit(perPage);

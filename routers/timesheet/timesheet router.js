@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const timesheetController = require('../../controller/timesheet controller');
+const {checkUserRole,authenticateUser}=require("../../controller/loginuser controller")
+
 
 router.route('/').get(timesheetController.getTimesheetUsers);
-router.route('/registration').post(timesheetController.registerTimesheetUser);
+router.post('/registration',timesheetController.registerTimesheetUser);
 router.get("/:id", timesheetController.getId);
 router.get("/data/:key", timesheetController.searchTimesheetUser);
 router.route('/update/:id').patch(timesheetController.updateTimesheetUser);

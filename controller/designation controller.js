@@ -1,4 +1,5 @@
 const designationUsers = require('../modals/designation schema');
+const allemployee = require("./../modals/all-empolyeeSchema/allEmpolyeeSchema");
 
 // Controller function for GET /designations
 const getDesignations = async (req, res) => {
@@ -35,7 +36,11 @@ const registerDesignation = async (req, res) => {
     const { Designation_Name, Department } = req.body;
 
     try {
-        const newuser = new designationUsers({ Designation_Name, Department });
+      // const id=req.user.id
+      // const user = await allemployee .findOne({email:id}); 
+        const newuser = new designationUsers({  
+          // userId:user._id,
+          Designation_Name, Department });
         await newuser.save();
         res.status(200).send('Designation Added Successfully');
     } catch (err) {

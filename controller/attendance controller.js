@@ -1,5 +1,7 @@
 const attendanceUsers = require('../modals/attendance schema');
 const Joi = require('@hapi/joi');
+const allemployee = require("./../modals/all-empolyeeSchema/allEmpolyeeSchema");
+
 
 // Controller functions
 const getAllAttendance = async (req, res) => {
@@ -21,6 +23,7 @@ const getAllAttendance = async (req, res) => {
               data,
               totalPages:totalPages,
               currentPage: page,
+              
           });
       } else {
           res.status(400).send("No Users");
@@ -49,8 +52,12 @@ const createAttendance = async (req, res) => {
 
     const { Name, Team, EDate, Punch_In, Punch_Out, Production, Break_Time, Over_Time } = req.body;
     const formattedDate = new Date(EDate).toLocaleDateString('en-GB');
-
-    const newuser = new attendanceUsers({ Name, Team, Date, Punch_In, Punch_Out, Production, Break_Time, Over_Time });
+    // const id=req.user.id
+    // const user = await allemployee .findOne({email:id});     
+    // console.log(user)
+    const newuser = new attendanceUsers({
+      // userId:user._id, 
+      Name, Team, Date, Punch_In, Punch_Out, Production, Break_Time, Over_Time });
     await newuser.save();
     res.status(200).send('Attendance Added Successfully');
   } catch (err) {

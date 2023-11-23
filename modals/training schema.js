@@ -4,6 +4,10 @@ const mongoose =require('mongoose');
 const Schema =mongoose.Schema;
 
 const userSchema = new Schema({
+    // userId:{
+    //     type:String,
+    //     required:true,
+    // }, 
     Training_Type:{
         type:String,
         required:true,
@@ -17,11 +21,11 @@ const userSchema = new Schema({
         required:true,
     },
     Start_Date :{
-        type:String,
+        type:Date,
         required:true,
     },
     End_Date:{
-        type:String,
+        type:Date,
         required:true
     },
     Discription:{

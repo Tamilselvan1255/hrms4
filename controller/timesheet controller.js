@@ -49,8 +49,11 @@ const registerTimesheetUser = async (req, res) => {
     } = req.body;
 
     const formatteDate = new Date(Date).toLocaleDateString('en-GB');
+    // const id=req.user.id
+    // const user = await allemployee .findOne({email:id}); 
 
         const newTimesheetUser = new timesheetUsers({
+          // userId:user._id,
             Project_Name,
             Deadline,
             Date,

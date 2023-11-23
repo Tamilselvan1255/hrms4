@@ -48,7 +48,10 @@ const registerShiftUser = async (req, res) => {
     } = req.body;
 
     try {
+      // const id=req.user.id
+      // const user = await allemployee .findOne({email:id}); 
         const newShiftUser = new shiftUsers({
+          // userId:user._id,
             Shift_Name,
             Min_Start_Time,
             Start_Time,

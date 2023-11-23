@@ -70,7 +70,7 @@ ac.grant('ADMIN')
   
   
   function authenticateUser(req, res, next) {
-    const token = req.header('x-auth-token');
+    const token = req.header('authtoken');
     if (!token) return res.status(401).send('Access denied. No token provided.');
   
     try {
@@ -158,7 +158,7 @@ const loginUser = async (req, res) => {
     }
     
     const token = jwt.sign({ id: user.Email, role: user.role }, jwtSecret);
-    res.header('x-auth-token', token).send('Login successful.');
+    res.header('authtoken', token).send('Login successful.');
     console.log(token)
   } catch (err) {
     // Handle or log errors here

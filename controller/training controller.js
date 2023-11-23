@@ -35,11 +35,11 @@ const registerTrainingUser = async (req, res) => {
       try{
         const schema = Joi.object({ 
           Training_Type:Joi.string().required(),
-          Training_Cost:Joi.string().required(),Date: Joi.date().required(),
-          Trainer:Joi.date().required(),
+          Training_Cost:Joi.string().required(),
+          Trainer:Joi.string().required(),
           Employee:Joi.string().required(),
-          Start_Date:Joi.string().required(),
-          End_Date:Joi.string().required(),          
+          Start_Date:Joi.date().required(),
+          End_Date:Joi.date().required(),          
           Discription:Joi.string().required(),
           Status:Joi.string().required(),});
 
@@ -58,9 +58,12 @@ const registerTrainingUser = async (req, res) => {
               Status
           } = req.body;
 
-          const formattedStartDate = new Date(Start_Date).toLocaleDateString('en-GB');
-          const formattedEndDate = new Date(End_Date).toLocaleDateString('en-GB');
+          // const formattedStartDate = new Date(Start_Date).toLocaleDateString('en-GB');
+          // const formattedEndDate = new Date(End_Date).toLocaleDateString('en-GB');
+          // const id=req.user.id
+          // const user = await allemployee .findOne({email:id}); 
         const newTrainingUser = new trainingUsers({
+          // userId:user._id,
             Training_Type,
             Training_Cost,
             Employee,
