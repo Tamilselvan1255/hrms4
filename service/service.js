@@ -14,6 +14,8 @@ const promotion=require("../routers/promotion/promotion router.js")
 const companySetting=require("../routers/company setting router.js/company router")
 const leaveReports =require("../routers/reports/leaveReports router")
 const attendanceReports =require("../routers/reports/attendanceReport router")
+const Overtime =require("../routers/overtime/overtime router")
+
 
 
 
@@ -34,6 +36,8 @@ app.use("/clients",client)
 app.use("/companysetting",companySetting) 
 app.use("/leaveReport",leaveReports) 
 app.use("/attendanceReport",attendanceReports) 
+app.use("/overtime",Overtime)
+
 
 
 
