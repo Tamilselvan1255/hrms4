@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const leaveController = require('../../controller/leave controller');
 const {checkUserRole,authenticateUser}=require("../../controller/loginuser controller")
-
+ 
 
 router.route('/').get(leaveController.getLeaveUsers);
 router.post('/registration',leaveController.registerLeaveUser);

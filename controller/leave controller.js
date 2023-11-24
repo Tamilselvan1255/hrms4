@@ -66,18 +66,15 @@ const searchLeaveUser = async (req, res) => {
 
   const query = {
     $or: [
-          { Name: { $regex: key, $options: "i" } },
-          { Satrt_Date: { $regex: key, $options: "i" } },
-          { End_Date: { $regex: key, $options: "i" } },
-          { Reason: { $regex: key, $options: "i" } },
-         
+      { Name: { $regex: key, $options: "i" } },
       // Add other fields here
     ]
   };
 
   try {
     const users = await leaveUsers
-      .find(query).sort({Name:1})
+      .find(query)
+      .sort({Name: 1 })
       .skip((page - 1) * perPage)
       .limit(perPage);
 
@@ -86,8 +83,8 @@ const searchLeaveUser = async (req, res) => {
       } else {
         res.status(400).send("No Users");
       }
-    } catch (err) {
-    res.status(500).send( err);
+  } catch (err) {
+    res.status(500).send(err );
   }
 };
 
