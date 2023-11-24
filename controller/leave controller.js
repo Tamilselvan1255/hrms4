@@ -2,6 +2,7 @@ const leaveUsers = require('../modals/leave schema');
 // const { format,parse }=require('date-fns')
 const Joi = require('@hapi/joi');
 const allemployee = require("./../modals/all-empolyeeSchema/allEmpolyeeSchema");
+const moment=require('moment')
 
 
 // Controller function for GET /leave
@@ -44,9 +45,8 @@ const registerLeaveUser = async (req, res) => {
       
       const { Name, Start_Date, End_Date, Reason } = req.body;
 
-      const formattedStartDate = new Date(Start_Date).toLocaleDateString('en-GB');
-      const formattedEndDate = new Date(End_Date).toLocaleDateString('en-GB');
-      // const id=req.user.id
+      const formattedStartDate = moment(Start_Date, 'DD/MM/YYYY').format('DD/MM/YYYY');
+      const formattedEndDate = moment(End_Date, 'DD/MM/YYYY').format('DD/MM/YYYY');      // const id=req.user.id
       // const user = await allemployee .findOne({email:id}); 
       const newLeaveUser = new leaveUsers({ 
         // userId:user._id,
