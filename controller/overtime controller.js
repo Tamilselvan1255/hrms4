@@ -39,7 +39,7 @@ const getOverUsers = async (req, res) => {
 const registerOverUser = async (req, res) => {   
 
     try {
-      const schema = Joi.object({ Employee_Name:Joi.string().required(),Discription:Joi.string().required(),Overtime_Date: Joi.string().required(),Overtime_Hour:Joi.string().required()});
+      const schema = Joi.object({ Employee_Name:Joi.string().required(),Discription:Joi.string().required(),Overtime_Date: Joi.date().required(),Overtime_Hour:Joi.string().required()});
       const { error } = schema.validate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
       

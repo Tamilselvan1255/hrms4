@@ -17,7 +17,7 @@ const userSchema = new Schema({
         required:true,
     },
     Overtime_Date :{
-        type:String,
+        type:Date,
         required:true,
     },
     
