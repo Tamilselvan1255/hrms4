@@ -35,7 +35,7 @@ const getTimesheetUsers = async (req, res) => {
 // Controller function for POST /timesheet/registration
 const registerTimesheetUser = async (req, res) => {
      try {
-      const schema = Joi.object({ Project_Name:Joi.string().required(),Deadline:Joi.string().required(),Date: Joi.date().required(),Total_Hours:Joi.date().required(),Remaining_Hours:Joi.string().required(),Hours:Joi.string().required(),Discription:Joi.string().required()});
+      const schema = Joi.object({ Project_Name:Joi.string().required(),Deadline:Joi.string().required(),Date: Joi.date().required(),Total_Hours:Joi.string().required(),Remaining_Hours:Joi.string().required(),Hours:Joi.string().required(),Discription:Joi.string().required()});
       const { error } = schema.validate(req.body);
       if (error) return res.status(400).send(error);
 
