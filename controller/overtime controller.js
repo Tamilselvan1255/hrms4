@@ -2,6 +2,7 @@ const overTimeSchema = require('../modals/overtime schema');
 // const { format,parse }=require('date-fns')
 const Joi = require('@hapi/joi');
 const allemployee = require("./../modals/all-empolyeeSchema/allEmpolyeeSchema");
+const moment=require('moment')
 
 
 // Controller function for GET /leave
@@ -44,12 +45,12 @@ const registerOverUser = async (req, res) => {
       
       const { Employee_Name, Discription, Overtime_Date, Overtime_Hour } = req.body;
 
-      // const formattedDate = new Date(Overtime_Date).toLocaleDateString('en-GB');
+      const formattedDate = moment(Overtime_Date, 'DD/MM/YYYY').format('DD/MM/YYYY');      // const id=req.user.id
       // const id=req.user.id
       // const user = await allemployee .findOne({email:id}); 
       const newLeaveUser = new overTimeSchema({ 
         // userId:user._id,
-        Employee_Name, Discription, Overtime_Date, Overtime_Hour });
+        Employee_Name, Discription, Overtime_Date:formattedDate, Overtime_Hour });
       await newLeaveUser.save();
 
       res.status(200).send('Overtime Added Sucessfully');

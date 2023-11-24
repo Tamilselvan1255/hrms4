@@ -1,5 +1,6 @@
 const timesheetUsers = require('../modals/timesheet schema');
 const Joi = require('@hapi/joi');
+const moment=require('moment')
 
 // Controller function for GET /timesheet
 const getTimesheetUsers = async (req, res) => {
@@ -48,7 +49,7 @@ const registerTimesheetUser = async (req, res) => {
         Discription
     } = req.body;
 
-    const formatteDate = new Date(Date).toLocaleDateString('en-GB');
+    const formattedDate = moment(Date, 'DD/MM/YYYY').format('DD/MM/YYYY');      // const id=req.user.id
     // const id=req.user.id
     // const user = await allemployee .findOne({email:id}); 
 
@@ -56,7 +57,7 @@ const registerTimesheetUser = async (req, res) => {
           // userId:user._id,
             Project_Name,
             Deadline,
-            Date:formatteDate,
+            Date:formattedDate,
             Total_Hours,
             Remaining_Hours,
             Hours,
