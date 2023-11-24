@@ -15,13 +15,13 @@ const allemployeeSchema = new Schema({
         type: String,
         required: true,
     },
-    email: {
+    Email: {
         type: String,
         unique: true,
         required: true,
         trim: true,
     },
-    password: {
+    Password: {
         type: String,
         required: true,
     },

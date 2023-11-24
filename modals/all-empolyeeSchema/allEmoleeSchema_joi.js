@@ -4,8 +4,8 @@ const allEmployee_Joi_schema = Joi.object({
     First_Name: Joi.string().required(),
     last_Name: Joi.string().required(),
     User_Name: Joi.string().required(),
-    email: Joi.string().email().required(), // Validate email format and make it required
-    password: Joi.string().required(),
+    Email: Joi.string().email().required(), // Validate email format and make it required
+    Password: Joi.string().required(),
     Confirm_Password: Joi.string().required(),
     Mobile_No: Joi.number().required(),
     Employee_ID: Joi.string().required(),

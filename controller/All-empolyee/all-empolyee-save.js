@@ -10,27 +10,27 @@ exports.allemployeeAdd=("/", async (req, res) => {
             return res.status(400).send(error.details[0].message);
         }
 
-        const { First_Name, last_Name, User_Name, email, password, Confirm_Password,Company, Employee_ID, Mobile_No, Department, Designation, Joining_Date } = req.body;
+        const { First_Name, last_Name, User_Name, Email, Password, Confirm_Password,Company, Employee_ID, Mobile_No, Department, Designation, Joining_Date } = req.body;
 
-        const user = await allemployee.findOne({email}); 
+        const user = await allemployee.findOne({Email}); 
         if(user){
             return res.status(400).send("Email Already Registered");
             
         }else{
 
-            if (password !== Confirm_Password) {
+            if (Password !== Confirm_Password) {
                 return res.status(400).send("Passwords do not match");
             }
 
             const salt = await bcrypt.genSalt(10);
-            const hashedPassword = await bcrypt.hash(password, salt);
+            const hashedPassword = await bcrypt.hash(Password, salt);
 
             const newEmployee = new allemployee({ 
-                email,
+                Email,
                 First_Name, // Corrected variable name
                 last_Name,  // Corrected variable name
                 User_Name,
-                password: hashedPassword, // Store the hashed password
+                Password: hashedPassword, // Store the hashed password
                 Confirm_Password:hashedPassword,
                 Employee_ID,
                 Mobile_No,

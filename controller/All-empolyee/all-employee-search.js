@@ -12,25 +12,27 @@ exports.allemployeeSearch=( async (req, res) => {
         const query = {
             $or: [
                 { First_Name: { $regex: key, $options: "i" } },
+
                 { last_Name: { $regex: key, $options: "i" } },
                 { User_Name: { $regex: key, $options: "i" } },
-                { email: { $regex: key, $options: "i" } },
-                { Employee_ID: { $regex: key, $options: "i" } },
-                { Department: { $regex: key, $options: "i" } },
-                { Designation: { $regex: key, $options: "i" } },
+                { Departement: { $regex: key, $options: "i" } },
+                { Email: { $regex: key, $options: "i" } },
+                { Emaployee_ID: { $regex: key, $options: "i" } },
                 { Mobile_No: isNaN(numericKey) ? { $regex: key, $options: "i" } : numericKey },
-                { Designation: { $regex: key, $options: "i" } },
             ]
         };
 
         // Perform the search with pagination
-        const employees = await allemployee
+        const users = await allemployee
             .find(query)
             .sort({ key: 1 })
             .skip((page - 1) * perPage)
             .limit(perPage);
-
-        res.status(200).send(employees);
+            if (users && users.length > 0) {
+                res.status(200).send(users);
+              } else {
+                res.status(400).send("No Users");
+              }
     } catch (err) {
         res.status(500).send(err); // Return a structured error response
     }
