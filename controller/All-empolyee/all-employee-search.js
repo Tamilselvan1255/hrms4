@@ -18,7 +18,7 @@ exports.allemployeeSearch=( async (req, res) => {
                 { Departement: { $regex: key, $options: "i" } },
                 { Email: { $regex: key, $options: "i" } },
                 { Emaployee_ID: { $regex: key, $options: "i" } },
-                { Mobile_No: isNaN(numericKey) ? { $regex: key, $options: "i" } : numericKey },
+                // { Mobile_No: isNaN(numericKey) ? { $regex: key, $options: "i" } : numericKey },
             ]
         };
 
