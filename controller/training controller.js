@@ -82,40 +82,38 @@ const registerTrainingUser = async (req, res) => {
 };
 
 const searchTrainingUser = async (req, res) => {
-    const page = parseInt(req.query.page) || 1;
-    const perPage = 10;
-    const key = req.params.key;
-  
-    const query = {
-      $or: [
-        { Training_Type: { $regex: key, $options: "i" } },
-        { Training_Cost: { $regex: key, $options: "i" } },
-        { Trainer: { $regex: key, $options: "i" } },
-        { Employee: { $regex: key, $options: "i" } },
-        { Status: { $regex: key, $options: "i" } },
-        { Start_Date: { $regex: key, $options: "i" } },
-        { End_Date: { $regex: key, $options: "i" } },
+  const page = parseInt(req.query.page) || 1;
+  const perPage = 10;
+  const key = req.params.key;
 
-        // Add other fields here
-      ]
-    };
-  
-    try {
-      const users = await trainingUsers
-        .find(query)
-        .sort({Employee:1})
-        .skip((page - 1) * perPage)
-        .limit(perPage);
-           
-        if (users && users.length > 0) {
-          res.status(200).send(users);
-        } else {
-          res.status(400).send("No Users");
-        }  
-    } catch (err) { 
-      res.status(500).send(err);
-    }
+  const query = {
+    $or: [
+      { Employee: { $regex: key, $options: "i" } },
+      { Trainer: { $regex: key, $options: "i" } },
+      { Training_Type: { $regex: key, $options: "i" } },
+    
+
+      // Add other fields here
+    ]
   };
+
+  try {
+    const users = await trainingUsers
+      .find(query)
+      .sort({Name: 1 })
+      .skip((page - 1) * perPage)
+      .limit(perPage);
+
+      if (users && users.length > 0) {
+        res.status(200).send(users);
+      } else {
+        res.status(400).send("No Users");
+      }
+  } catch (err) {
+    res.status(500).send(err );
+  }
+};
+  
 
   const getId = async (req, res) => {
     const {id}=req.params

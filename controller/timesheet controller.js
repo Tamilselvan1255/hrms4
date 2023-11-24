@@ -77,13 +77,13 @@ const searchTimesheetUser = async (req, res) => {
   
     const query = {
       $or: [
-            { Project_Name: { $regex: key, $options: "i" } },
-            { Deadline: { $regex: key, $options: "i" } },
-            { Date: { $regex: key, $options: "i" } },
-            { Total_Hours: { $regex: key, $options: "i" } },
-            { Hours: { $regex: key, $options: "i" } },
-            { Remaining_Hours: { $regex: key, $options: "i" } },
-            { Discription: { $regex: key, $options: "i" } },
+        { Project_Name: { $regex: key, $options: "i" } },
+        {Deadline: { $regex: key, $options: "i" } },
+        { Hours: { $regex: key, $options: "i" } },
+        { Remaining_Hours: { $regex: key, $options: "i" } },
+        { Total_Hours: { $regex: key, $options: "i" } },
+
+
         // Add other fields here
       ]
     };
