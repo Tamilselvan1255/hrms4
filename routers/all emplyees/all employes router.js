@@ -18,3 +18,4 @@ router.get('/:id',getId)
 router.patch('/update/:id',allemployeeUpadated)
 
 module.exports = router;
+ 

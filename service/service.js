@@ -1,4 +1,4 @@
- const express = require('express');
+const express = require('express');
 const attendanceRouter = require('../routers/attendance/attendnace router');
 const leaveRouter =require("../routers/leave/leave router")
 const trainingRouter =require("../routers/training/training router")

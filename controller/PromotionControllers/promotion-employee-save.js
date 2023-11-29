@@ -1,6 +1,5 @@
 const Promotion = require("../../modals/PromotionSchema/promotion");
 const Emp_promotionSchema_joi = require("../../modals/PromotionSchema/Emp_promotionSchema_joi");
-<<<<<<< HEAD
 const Joi = require('@hapi/joi');
 
 exports.promotionAdd=( async (req, res) =>  {
@@ -12,11 +11,6 @@ exports.promotionAdd=( async (req, res) =>  {
             promotion_to: Joi.string().required(),
             promotion_date: Joi.date().iso().required()
         });
-=======
-
-exports.promotionAdd=( async (req, res) =>  {
-    try {
->>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
         const { error } = Emp_promotionSchema_joi.validate(req.body);
 
         if (error) {
@@ -25,22 +19,14 @@ exports.promotionAdd=( async (req, res) =>  {
 
         const { promotion_employee, department, promotion_from, promotion_to, promotion_date } = req.body;
        
-<<<<<<< HEAD
         // const formattedDate = new Date(promotion_date).toLocaleDateString('en-GB');
-=======
-        const formattedDate = new Date(promotion_date).toLocaleDateString('en-GB');
->>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
 
         const promotion_employees = new Promotion({
             promotion_employee,
             department,
             promotion_from,
             promotion_to,
-<<<<<<< HEAD
             promotion_date,
-=======
-            promotion_date:formattedDate,
->>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
         });
         
         const savedPromotion = await promotion_employees.save();

@@ -8,11 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< HEAD
-    "start": "nodemon node index.js"
-=======
     "start": "node index.js"
->>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
   },
   "author": "",
   "license": "ISC",
@@ -30,11 +26,7 @@
     "mongodb": "^6.1.0",
     "mongoose": "^7.6.0",
     "mongoose-paginate-v2": "^1.7.4",
-<<<<<<< HEAD
     "nodemailer": "^6.9.6",
     "nodemon": "^3.0.1"
-=======
-    "nodemailer": "^6.9.6"
->>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
   }
 }

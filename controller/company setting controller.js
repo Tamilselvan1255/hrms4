@@ -31,7 +31,6 @@ const getAllcompanySetting =async (req, res) => {
 
 const createcompanySetting = async (req, res) => {
  try {
-<<<<<<< HEAD
     const schema = Joi.object({ 
       Email: Joi.string().email().required(),
       Company_Name:Joi.string().required(),
@@ -46,9 +45,6 @@ const createcompanySetting = async (req, res) => {
       Fax:Joi.number().required(),
       Website_Url:Joi.string().required()
     });
-=======
-    const schema = Joi.object({ Email: Joi.string().email().required(),Company_Name:Joi.string().required(),Contact_Person:Joi.string().required(), Address:Joi.string().required(), Country:Joi.string().required(), City:Joi.string().required(), State:Joi.string().required(), Postal_Code:Joi.number().required(), Phone_Number:Joi.number().required(),Mobile_Number:Joi.number().required(),Fax:Joi.required().required(),Website_Url:Joi.required().required() });
->>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
     const { error } = schema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     const { Company_Name, Email,Contact_Person, Address, Country, City, State, Postal_Code, Phone_Number,Mobile_Number,Fax,Website_Url } = req.body;
