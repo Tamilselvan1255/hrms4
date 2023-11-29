@@ -39,6 +39,7 @@ const getLeaveUsers = async (req, res) => {
 const registerLeaveUser = async (req, res) => {   
 
     try {
+<<<<<<< HEAD
       const schema = Joi.object({ 
         Name:Joi.string().required(),
         Reason:Joi.string().required(),
@@ -46,17 +47,29 @@ const registerLeaveUser = async (req, res) => {
         End_Date:Joi.date().iso().greater(Joi.ref('Start_Date')).required()
       });
 
+=======
+      const schema = Joi.object({ Name:Joi.string().required(),Reason:Joi.string().required(),Start_Date: Joi.date().required(),End_Date:Joi.date().required()});
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
       const { error } = schema.validate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
       
       const { Name, Start_Date, End_Date, Reason } = req.body;
 
+<<<<<<< HEAD
       // const formattedStartDate = moment(Start_Date, 'DD/MM/YYYY').format('DD/MM/YYYY');
       // const formattedEndDate = moment(End_Date, 'DD/MM/YYYY').format('DD/MM/YYYY');      // const id=req.user.id
       // const user = await allemployee .findOne({email:id}); 
       const newLeaveUser = new leaveUsers({ 
         // userId:user._id,
         Name,Start_Date, End_Date, Reason });
+=======
+      const formattedStartDate = moment(Start_Date, 'DD/MM/YYYY').format('DD/MM/YYYY');
+      const formattedEndDate = moment(End_Date, 'DD/MM/YYYY').format('DD/MM/YYYY');      // const id=req.user.id
+      // const user = await allemployee .findOne({email:id}); 
+      const newLeaveUser = new leaveUsers({ 
+        // userId:user._id,
+        Name,Start_Date:formattedStartDate, End_Date:formattedEndDate, Reason });
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
       await newLeaveUser.save();
 
       res.status(200).send('Leave Added Sucessfully');
@@ -143,4 +156,8 @@ const updateLeaveUser = async (req, res) => {
     getId
   };
 
+<<<<<<< HEAD
 // Define other controller functions for your routes
+=======
+// Define other controller functions for your routes
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe

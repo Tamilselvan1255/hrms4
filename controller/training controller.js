@@ -32,6 +32,7 @@ const getTrainingUsers =async (req, res) => {
 
 // Controller function for POST /training/registration
 const registerTrainingUser = async (req, res) => {
+<<<<<<< HEAD
   try {
       const schema = Joi.object({
           Training_Type: Joi.string().required(),
@@ -80,6 +81,57 @@ const registerTrainingUser = async (req, res) => {
 };
 
 
+=======
+      try{
+        const schema = Joi.object({ 
+          Training_Type:Joi.string().required(),
+          Training_Cost:Joi.string().required(),
+          Trainer:Joi.string().required(),
+          Employee:Joi.string().required(),
+          Start_Date:Joi.date().required(),
+          End_Date:Joi.date().required(),          
+          Discription:Joi.string().required(),
+          Status:Joi.string().required(),});
+
+      const { error } = schema.validate(req.body);
+      if (error) return res.status(400).send(error);
+
+
+          const {
+              Training_Type,
+              Training_Cost,
+              Employee,
+              Trainer,
+              Start_Date,
+              End_Date,
+              Discription,
+              Status
+          } = req.body;
+
+          const formattedStartDate = new Date(Start_Date).toLocaleDateString('en-GB');
+          const formattedEndDate = new Date(End_Date).toLocaleDateString('en-GB');
+          // const id=req.user.id
+          // const user = await allemployee .findOne({email:id}); 
+        const newTrainingUser = new trainingUsers({
+          // userId:user._id,
+            Training_Type,
+            Training_Cost,
+            Employee,
+            Trainer,
+            Start_Date:formattedStartDate,
+            End_Date:formattedEndDate, 
+            Discription,
+            Status
+        });
+
+        await newTrainingUser.save();
+        res.status(200).send('Training Added Successfully');
+    } catch (err) {
+        res.status(400).send('error: ' + err);
+    }
+};
+
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
 const searchTrainingUser = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const perPage = 10;

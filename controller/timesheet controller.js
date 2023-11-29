@@ -34,6 +34,7 @@ const getTimesheetUsers = async (req, res) => {
 
 // Controller function for POST /timesheet/registration
 const registerTimesheetUser = async (req, res) => {
+<<<<<<< HEAD
   try {
     const schema = Joi.object({
       Project_Name: Joi.string().required(),
@@ -82,6 +83,45 @@ const registerTimesheetUser = async (req, res) => {
 };
 
 
+=======
+     try {
+      const schema = Joi.object({ Project_Name:Joi.string().required(),Deadline:Joi.string().required(),Date: Joi.date().required(),Total_Hours:Joi.string().required(),Remaining_Hours:Joi.string().required(),Hours:Joi.string().required(),Discription:Joi.string().required()});
+      const { error } = schema.validate(req.body);
+      if (error) return res.status(400).send(error);
+
+      const {
+        Project_Name,
+        Deadline,
+        Date,
+        Total_Hours,
+        Remaining_Hours,
+        Hours,
+        Discription
+    } = req.body;
+
+    const formattedDate = moment(Date, 'DD/MM/YYYY').format('DD/MM/YYYY');      // const id=req.user.id
+    // const id=req.user.id
+    // const user = await allemployee .findOne({email:id}); 
+
+        const newTimesheetUser = new timesheetUsers({
+          // userId:user._id,
+            Project_Name,
+            Deadline,
+            Date:formattedDate,
+            Total_Hours,
+            Remaining_Hours,
+            Hours,
+            Discription
+        });
+
+        await newTimesheetUser.save();
+        res.status(200).send('Added Timesheet Details ');
+    } catch (err) {
+        res.status(400).send('error: ' + err);
+    }
+};
+
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
 const searchTimesheetUser = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const perPage = 10;

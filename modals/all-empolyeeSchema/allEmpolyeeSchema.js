@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // const mongoose = require('mongoose');
 // const Schema = mongoose.Schema;
 // const Joi = require('@hapi/joi');
@@ -62,6 +63,11 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+=======
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Joi = require('@hapi/joi');
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
 
 const allemployeeSchema = new Schema({
     First_Name: {
@@ -76,11 +82,16 @@ const allemployeeSchema = new Schema({
         type: String,
         required: true,
     },
+<<<<<<< HEAD
     email: {
+=======
+    Email: {
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
         type: String,
         unique: true,
         required: true,
         trim: true,
+<<<<<<< HEAD
         validate: {
             validator: function (v) {
                 // Use a regular expression or another method to validate the email format
@@ -89,6 +100,8 @@ const allemployeeSchema = new Schema({
             },
             message: 'Invalid email format',
         },
+=======
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
     },
     Password: {
         type: String,
@@ -98,9 +111,15 @@ const allemployeeSchema = new Schema({
         type: String,
         required: true,
     },
+<<<<<<< HEAD
     Company: {
         type: String,
         required: true,
+=======
+    Company:{
+        type: String,
+        required: true, 
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
     },
     Employee_ID: {
         type: String,
@@ -126,4 +145,8 @@ const allemployeeSchema = new Schema({
 
 const allemployee = mongoose.model('allemployee user', allemployeeSchema);
 
+<<<<<<< HEAD
 module.exports = allemployee;
+=======
+module.exports = allemployee;
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe

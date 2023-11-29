@@ -38,25 +38,43 @@ const createAttendance = async (req, res) => {
   try {
     const schema = Joi.object({ Name:Joi.string().required(),
       Team:Joi.string().required(),
+<<<<<<< HEAD
       date: Joi.date().iso().required(),
+=======
+      date: Joi.date().required(),
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
       Punch_In:Joi.string().required(),
       Punch_Out: Joi.string().required(),
       Production: Joi.string().required(),
       Break_Time: Joi.string().required(),
       Over_Time: Joi.string().required(),
+<<<<<<< HEAD
     });
     
+=======
+
+
+    });
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
     const { error } = schema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     const { Name, Team, date, Punch_In, Punch_Out, Production, Break_Time, Over_Time } = req.body;
+<<<<<<< HEAD
     
+=======
+    const formattedDate = new Date(date).toLocaleDateString('en-GB');
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
     // const id=req.user.id
     // const user = await allemployee .findOne({email:id});     
     // console.log(user)
     const newuser = new attendanceUsers({
       // userId:user._id, 
+<<<<<<< HEAD
       Name, Team, date, Punch_In, Punch_Out, Production, Break_Time, Over_Time });
+=======
+      Name, Team, date:formattedDate, Punch_In, Punch_Out, Production, Break_Time, Over_Time });
+>>>>>>> 6865a817290281c9bdfd0135ef93d72d6a6263fe
     await newuser.save();
     res.status(200).send('Attendance Added Successfully');
   } catch (err) {
